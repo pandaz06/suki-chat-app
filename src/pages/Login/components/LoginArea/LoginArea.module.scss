@@ -1,0 +1,48 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding: 10rem 15rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.logo {
+    margin-bottom: 2rem;
+}
+.title {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.sub-title {
+    color: var(--sub-text-color);
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.options {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+.option-btn {
+    color: var(--text-color);
+    border-color: var(--text-color);
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.register-redirect {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.open-register {
+    color: var(--text-color);
+    font-size: 1.5rem;
+}

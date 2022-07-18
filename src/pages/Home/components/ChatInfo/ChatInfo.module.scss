@@ -1,0 +1,51 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    border-left: 1px solid #5b8a7218;
+    background-color: var(--background-color);
+}
+
+// Chatroom's / Friend's name
+.name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-shadow: 0 5px 2.5rem -2.5rem var(--text-color);
+    h3 {
+        color: var(--text-color);
+        margin-top: 5px;
+        margin-bottom: 3px;
+    }
+    p {
+        color: var(--sub-text-color);
+    }
+}
+
+.body {
+    flex: 1;
+    overflow: auto;
+}
+
+// Info list
+.info {
+    padding: 5px 1.5rem;
+}
+.info:first-child {
+    margin-top: 1rem;
+}
+
+// Toggle btns
+.toggles {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 1rem;
+    box-shadow: 0 0 2rem -1.5rem var(--text-color);
+}
+.toggle-btn {
+    color: #fff;
+    padding: 7px 5px;
+    margin-left: 5px;
+}

@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #e9fcff;
+}
+.message {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 2rem;
+}
+.no-match-img {
+    padding: 5rem 0;
+    height: calc(100% - 10rem);
+}
+.back-home-btn {
+}

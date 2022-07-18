@@ -1,0 +1,60 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100vh;
+    background-color: var(--background-color-2);
+}
+
+// User Info
+.user {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 3rem 1.5rem 1rem 1.5rem;
+}
+.user-info {
+    margin-left: 1.5rem;
+    h3 {
+        color: var(--text-color);
+        font-weight: 600;
+    }
+    p {
+        color: var(--sub-text-color);
+    }
+}
+
+// Friends and Messages
+.body {
+    flex: 1;
+    overflow: auto;
+    overflow-y: overlay;
+}
+
+// Friends
+.friend-list {
+    padding: 1.5rem;
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+// Messages
+.message-list {
+    padding: 1.5rem;
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 2rem;
+        font-weight: 700;
+        font-size: 1.8rem;
+    }
+    .search-input {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
+}

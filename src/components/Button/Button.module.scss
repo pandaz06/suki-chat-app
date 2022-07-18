@@ -1,0 +1,79 @@
+.wrapper {
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    font-weight: 500;
+    font-size: 1.6rem;
+    padding: 9px 7px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    user-select: none;
+    transition: var(--transition-default);
+    opacity: 0.8;
+    &:hover {
+        opacity: 1;
+    }
+}
+// Button types
+.primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.primary.disabled {
+    background-color: var(--disabled-color);
+}
+.outline {
+    opacity: 0.5;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.rounded {
+    border-radius: 999px;
+}
+.listStyle {
+    justify-content: center;
+    .icon {
+        position: absolute;
+        left: 7px;
+    }
+}
+.disabled {
+    pointer-events: none;
+}
+
+// Button sizes
+.small {
+    width: 8.8rem;
+    padding: 4px 0;
+}
+.large {
+    min-width: 168px;
+    padding: 14px 0;
+}
+
+// Icons
+.icon + .title,
+.title + .icon {
+    margin-left: 1rem;
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+.only-icon {
+    .title {
+        display: none;
+    }
+    .icon + .title,
+    .title + .icon {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,106 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #5b8a72;
+    --text-color: #1d201b;
+    --sub-text-color: #92929e;
+    --background-color: #fff;
+    --background-color-2: #5b8a7218;
+    --disabled-color: #93e0b9;
+    --overlay-color: rgba(255, 255, 255, 0.63);
+
+    --sidebar-width: 6rem;
+    --small-avatar-size: 3rem;
+    --medium-avatar-size: 4.5rem;
+    --large-avatar-size: 7rem;
+    --giant-avatar-size: 12rem;
+
+    --transition-default: all ease 0.2s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.6rem;
+    text-rendering: optimizeSpeed;
+    scroll-behavior: smooth;
+    caret-color: var(--primary-color);
+    overflow-y: overlay;
+}
+
+textarea,
+input,
+button {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.app.dark {
+    --text-color: #fff;
+    --background-color: #1d201b;
+    --background-color-2: #ffffff18;
+    --overlay-color: #1d201bd0;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: var(--transition-default);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+.container {
+    display: flex;
+    margin-left: var(--sidebar-width);
+    height: 100vh;
+}
+
+// Scrollbar Styles
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 5px;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 5px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--background-color-2);
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--background-color-2);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+// Selection
+::-moz-selection {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+::selection {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}

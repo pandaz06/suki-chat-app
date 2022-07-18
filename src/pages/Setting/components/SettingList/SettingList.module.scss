@@ -1,0 +1,29 @@
+.wrapper {
+    width: 30%;
+    overflow: auto;
+    overflow-y: overlay;
+    background-color: var(--background-color-2);
+    padding: 1rem;
+}
+.setting-group {
+    margin: 1rem 0;
+    .title {
+        font-size: 1.7rem;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+.setting-item {
+    color: var(--text-color);
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 5px;
+    transition: var(--transition-default);
+    &.active {
+        opacity: 1;
+        background-color: var(--background-color-2);
+    }
+    &:hover {
+        background-color: var(--background-color-2);
+    }
+}

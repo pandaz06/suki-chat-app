@@ -1,0 +1,55 @@
+.wrapper {
+    overflow: auto;
+    overflow-y: overlay;
+    max-height: 40rem;
+}
+.search-input {
+    padding: 3px 1rem;
+    margin-bottom: 1rem;
+}
+.friend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-default);
+    padding: 1rem;
+    border-radius: 5px;
+    .info {
+        display: flex;
+        align-items: center;
+    }
+    .avatar {
+        margin-right: 1rem;
+    }
+    .name {
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+    .username {
+        color: var(--sub-text-color);
+        font-size: 1.5rem;
+    }
+    .toggle-btns {
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        transition: var(--transition-default);
+    }
+    .toggle-btn {
+        color: var(--text-color);
+        opacity: 0.6;
+        font-size: 1.5rem;
+        padding: 4px 1px;
+        margin-left: 5px;
+        background-color: transparent;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+.friend-item:hover {
+    background-color: var(--background-color-2);
+    .toggle-btns {
+        opacity: 1;
+    }
+}

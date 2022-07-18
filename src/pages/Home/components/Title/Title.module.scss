@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-color);
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    .sub-text {
+        justify-content: center;
+        opacity: 0.8;
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding: 5px;
+        min-width: 3rem;
+        color: var(--primary-color);
+        background-color: var(--background-color-2);
+    }
+    .sub-text.isInvisibleBtn {
+        background-color: transparent;
+    }
+    .sub-text:hover {
+        opacity: 1;
+    }
+}
