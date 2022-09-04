@@ -1,12 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import {
-    FacebookAuthProvider,
-    GithubAuthProvider,
-    GoogleAuthProvider,
-    signInWithPopup,
-    TwitterAuthProvider,
-} from 'firebase/auth';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 
 import { auth, db } from '~/firebase/config';
@@ -76,25 +70,7 @@ const loginConfigs = {
                 signInWithSocialMedia(provider);
             },
         },
-        {
-            title: 'Đăng nhập với Github',
-            icon: <FontAwesomeIcon icon={faGithub} />,
-            onClick: () => {
-                const provider = new GithubAuthProvider();
-                signInWithSocialMedia(provider);
-            },
-        },
-        {
-            title: 'Đăng nhập với Twitter',
-            icon: <FontAwesomeIcon icon={faTwitter} />,
-            onClick: () => {
-                const provider = new TwitterAuthProvider();
-                signInWithSocialMedia(provider);
-            },
-        },
     ],
-    bottomText: 'Bạn chưa có tài khoản ?',
-    changeTab: 'Đăng kí',
 };
 
 export default loginConfigs;
