@@ -99,7 +99,6 @@ function UserInfo({ id, small }) {
                             className={cx('avatar')}
                             src={sellectedUser?.profile.photoURL}
                             name={sellectedUser?.profile.displayName}
-                            isChangable={id === uid}
                             isLoading={!sellectedUser}
                         />
                         {sellectedUser ? (
