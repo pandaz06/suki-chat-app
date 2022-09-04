@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 3rem;
+    background-color: var(--background-color);
+    border-radius: 5px;
+}
+.logo {
+    width: 8rem;
+    margin-bottom: 2rem;
+}
+.message {
+    text-align: center;
+    width: 60%;
+    font-weight: 400;
+    font-size: 1.6rem;
+}

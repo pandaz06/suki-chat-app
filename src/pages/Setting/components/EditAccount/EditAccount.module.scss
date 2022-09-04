@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.toggles {
+    display: flex;
+    justify-content: flex-end;
+}
+.toggle-btn {
+    margin-left: 5px;
+}

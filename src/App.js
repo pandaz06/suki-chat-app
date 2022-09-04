@@ -2,82 +2,68 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 import { publicRoutes } from '~/routes';
-import { Modal } from './components';
-import { ModalProvider, ThemeProvider, UserStatusProvider } from './contexts';
+import { NoData } from './components';
+import { AuthProvider, ModalProvider, ThemeProvider, RoomsProvider, OffCanvaProvider } from './contexts';
 
 function App() {
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
     useEffect(() => {
-        if (!localStorage.getItem('dark')) {
-            localStorage.setItem('dark', JSON.stringify(false));
-        }
-        if (!localStorage.getItem('isLogin')) {
-            localStorage.setItem('isLogin', JSON.stringify(false));
-        }
+        window.addEventListener('resize', () => {
+            setScreenWidth(window.innerWidth);
+        });
+        return () =>
+            window.removeEventListener('resize', () => {
+                setScreenWidth(window.innerWidth);
+            });
     }, []);
 
-    const [isLogin, setIsLogin] = useState(JSON.parse(localStorage.getItem('isLogin')));
-    const [dark, setDark] = useState(JSON.parse(localStorage.getItem('dark')));
+    useEffect(() => {
+        if (localStorage.getItem('dark')) return;
 
-    const [isShowModal, setIsShowModal] = useState(false);
-    const [modalTitle, setModalTitle] = useState('');
-    const [modalContent, setModalContent] = useState(null);
+        localStorage.setItem('dark', JSON.stringify(false));
+    }, []);
+
+    const [dark, setDark] = useState(JSON.parse(localStorage.getItem('dark')));
 
     useEffect(() => {
         localStorage.setItem('dark', JSON.stringify(dark));
     }, [dark]);
 
-    useEffect(() => {
-        localStorage.setItem('isLogin', JSON.stringify(isLogin));
-    }, [isLogin]);
-
     return (
         <ThemeProvider value={{ dark, setDark }}>
-            <div className={`app ${dark ? 'dark' : ''}`}>
-                <BrowserRouter>
-                    <UserStatusProvider value={{ isLogin, setIsLogin }}>
-                        <ModalProvider
-                            value={{
-                                isShowModal,
-                                setIsShowModal,
-                                modalTitle,
-                                setModalTitle,
-                                modalContent,
-                                setModalContent,
-                            }}
-                        >
-                            <Routes>
-                                {publicRoutes.map((route, index) => {
-                                    const Comp = route.component;
-                                    const Layout = route.layout;
-                                    return (
-                                        <Route
-                                            key={index}
-                                            path={route.path}
-                                            element={
-                                                <Layout>
-                                                    <Comp />
-                                                </Layout>
-                                            }
-                                        >
-                                            {route.children &&
-                                                route.children.map((item, index) => {
-                                                    const Comp = item.component;
-                                                    return (
-                                                        <Route
-                                                            key={index}
-                                                            path={item.path}
-                                                            element={<Comp {...item.props} />}
-                                                        />
-                                                    );
-                                                })}
-                                        </Route>
-                                    );
-                                })}
-                            </Routes>
-                            {isShowModal && <Modal title={modalTitle} content={modalContent} />}
-                        </ModalProvider>
-                    </UserStatusProvider>
-                </BrowserRouter>
+            <div className={`app ${dark && 'dark'}`}>
+                {screenWidth > 768 ? (
+                    <BrowserRouter>
+                        <AuthProvider>
+                            <RoomsProvider>
+                                <OffCanvaProvider>
+                                    <ModalProvider>
+                                        <Routes>
+                                            {publicRoutes.map((route, index) => {
+                                                const Comp = route.component;
+                                                const Layout = route.layout;
+                                                return (
+                                                    <Route
+                                                        key={index}
+                                                        path={route.path}
+                                                        element={
+                                                            <Layout>
+                                                                <Comp />
+                                                            </Layout>
+                                                        }
+                                                    />
+                                                );
+                                            })}
+                                        </Routes>
+                                    </ModalProvider>
+                                </OffCanvaProvider>
+                            </RoomsProvider>
+                        </AuthProvider>
+                    </BrowserRouter>
+                ) : (
+                    <NoData message="Hiện tại Suki chưa hỗ trợ kích cỡ thiết bị của bạn. Trong tương lai chúng tôi sẽ khắc phục điều này" />
+                )}
             </div>
         </ThemeProvider>
     );

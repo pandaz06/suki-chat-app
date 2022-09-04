@@ -2,20 +2,50 @@ import classnames from 'classnames/bind';
 import { useContext, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSignOut, faMessage, faUser, faGear, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Sidebar.module.scss';
 import logo from '~/assets/images/logos/logo-rounded.png';
-import { Button } from '~/components';
-import SIDEBAR_ITEMS from './sidebarConfig';
-import { NotifyContext } from '~/contexts/NotifyContext';
+import { Button, LogoutArea } from '~/components';
+import { routesConfigs } from '~/configs';
+import { AuthContext } from '~/contexts/AuthContext';
+import { ModalContext } from '~/contexts/ModalContext';
 
 const cx = classnames.bind(styles);
 
 function Sidebar() {
-    const { setShowNotify } = useContext(NotifyContext);
+    const { user } = useContext(AuthContext);
+    const { setIsShowModal, setModalOptions, setModalTitle, setModalContent } = useContext(ModalContext);
     const [expanded, setExpanded] = useState(false);
     const location = useLocation();
+
+    const SIDEBAR_ITEMS = {
+        top: [
+            {
+                title: 'Tin nhắn',
+                noti: '0',
+                path: routesConfigs.home,
+                icon: <FontAwesomeIcon icon={faMessage} />,
+            },
+            {
+                title: 'Hồ sơ',
+                path: `/${user.uid}`,
+                icon: <FontAwesomeIcon icon={faUser} />,
+            },
+            {
+                title: 'Mọi người',
+                noti: '0',
+                path: routesConfigs.notification,
+                icon: <FontAwesomeIcon icon={faUserFriends} />,
+            },
+            {
+                title: 'Cài đặt',
+                path: routesConfigs.setting,
+                icon: <FontAwesomeIcon icon={faGear} />,
+            },
+        ],
+    };
+
     return (
         <div
             className={cx('wrapper', {
@@ -44,7 +74,8 @@ function Sidebar() {
                             leftIcon={item.icon}
                             onClick={() => setExpanded(false)}
                             badge={
-                                item.noti && (
+                                item.noti &&
+                                item.noti !== '0' && (
                                     <span className={cx('badge')}>
                                         <p>{item.noti}</p>
                                     </span>
@@ -65,7 +96,10 @@ function Sidebar() {
                         className={cx('sidebar-item')}
                         onClick={() => {
                             setExpanded(false);
-                            setShowNotify(true);
+                            setIsShowModal(true);
+                            setModalOptions({ small: true });
+                            setModalTitle('Đăng xuất');
+                            setModalContent(<LogoutArea />);
                         }}
                     >
                         Đăng xuất

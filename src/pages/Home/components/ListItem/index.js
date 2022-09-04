@@ -5,14 +5,13 @@ import styles from './ListItem.module.scss';
 
 const cx = classnames.bind(styles);
 
-function ListItem({ avatar, text, subText, squareAvatar, active, isOnline, isSeen = true }) {
+function ListItem({ avatar, text, subText, squareAvatar, active, onClick, isOnline, isMessage, isSeen = true, small }) {
     return (
-        <div className={cx('wrapper', { active })}>
-            <Avatar src={avatar} name={text} square={squareAvatar} isOnline={isOnline} />
-            <div className={cx('info')}>
-                <h3 className={cx('name')}>{text}</h3>
-                {subText && <p className={cx('message')}>{subText}</p>}
-                {!isSeen && <div className={cx('seen-circle')}></div>}
+        <div className={cx('wrapper', { active, isMessage, isSeen })} onClick={onClick}>
+            <Avatar src={avatar} name={text} square={squareAvatar} isOnline={isOnline} small={small} />
+            <div className={cx('info', { small })}>
+                <h3 className={cx('text')}>{text}</h3>
+                {subText && <p className={cx('sub-text')}>{subText}</p>}
             </div>
         </div>
     );

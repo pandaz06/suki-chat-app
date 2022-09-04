@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.group-photo {
+    margin-top: 1rem;
+}
+.message {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.toggle-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 5px;
+}

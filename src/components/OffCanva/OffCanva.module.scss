@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+}
+.container {
+    position: absolute;
+    overflow: auto;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    background-color: var(--background-color);
+    animation: fadeInFromRight ease-in-out 0.2s;
+}
+
+@keyframes fadeInFromRight {
+    from {
+        transform: translateX(30rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

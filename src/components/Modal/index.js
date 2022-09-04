@@ -10,10 +10,13 @@ import { ModalContext } from '~/contexts/ModalContext';
 const cx = className.bind(styles);
 
 function Modal({ title, content }) {
-    const { setIsShowModal } = useContext(ModalContext);
+    const {
+        setIsShowModal,
+        modalOptions: { small },
+    } = useContext(ModalContext);
     return (
         <div className={cx('wrapper')} onClick={() => setIsShowModal(false)}>
-            <div className={cx('container')} onClick={(e) => e.stopPropagation()}>
+            <div className={cx('container', { small })} onClick={(e) => e.stopPropagation()}>
                 <div className={cx('header')}>
                     <h3>{title}</h3>
                     <Button

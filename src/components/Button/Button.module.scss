@@ -10,11 +10,12 @@
     border: 1px solid transparent;
     user-select: none;
     transition: var(--transition-default);
-    opacity: 0.8;
+    opacity: 0.9;
     &:hover {
         opacity: 1;
     }
 }
+
 // Button types
 .primary {
     background-color: var(--primary-color);
@@ -24,11 +25,17 @@
     background-color: var(--disabled-color);
 }
 .outline {
-    opacity: 0.5;
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    border-color: var(--text-color);
+    color: var(--text-color);
+    &:hover {
+        background-color: #e23e570c;
+    }
+}
+.outline.disabled {
+    opacity: 0.3;
 }
 .text {
+    color: var(--text-color);
     &:hover {
         text-decoration: underline;
     }
@@ -44,6 +51,7 @@
     }
 }
 .disabled {
+    opacity: 1;
     pointer-events: none;
 }
 

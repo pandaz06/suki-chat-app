@@ -4,16 +4,12 @@ import { useContext } from 'react';
 import styles from './LoginArea.module.scss';
 import { Avatar, Button } from '~/components';
 import logo from '~/assets/images/logos/logo-rounded.png';
-import { LoginContext } from '~/contexts/LoginContext';
+import { ModalContext } from '~/contexts/ModalContext';
 
 const cx = classNames.bind(styles);
 
 function LoginArea({ data }) {
-    const { loginTab, setLoginTab } = useContext(LoginContext);
-
-    const handleChangeTab = () => {
-        setLoginTab(loginTab === 0 ? 1 : 0);
-    };
+    const { setIsShowModal, setModalTitle, setModalContent } = useContext(ModalContext);
 
     return (
         <div className={cx('wrapper')}>
@@ -30,17 +26,11 @@ function LoginArea({ data }) {
                         outline
                         listStyle
                         leftIcon={item.icon}
-                        onClick={item.onClick}
+                        onClick={() => item.onClick(setIsShowModal, setModalTitle, setModalContent)}
                     >
                         {item.title}
                     </Button>
                 ))}
-            </div>
-            <div className={cx('register-redirect')}>
-                {data.bottomText}
-                <Button text className={cx('open-register')} onClick={handleChangeTab}>
-                    {data.changeTab}
-                </Button>
             </div>
         </div>
     );

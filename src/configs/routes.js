@@ -2,13 +2,8 @@ const routesConfigs = {
     login: '/login',
     home: '/',
     notification: '/notification',
-    profile: '/@:nickname',
+    profile: '/:uid',
     setting: '/setting',
-    status: 'status',
-    notifications: 'notifications',
-    appearance: 'appearance',
-    account: 'account',
-    legalPolicies: 'legal-and-policies',
     noMatch: '*',
 };
 

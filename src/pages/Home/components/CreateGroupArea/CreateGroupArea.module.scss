@@ -1,61 +1,25 @@
 .wrapper {
-    overflow: auto;
-    max-height: 40rem;
-}
-.info-input {
-    margin-bottom: 1rem;
+    flex: 1;
 }
 .members {
-    .title {
-        font-size: 1.6rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: var(--text-color);
-        user-select: none;
-    }
+    margin-bottom: 1rem;
     .list {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         background-color: var(--background-color-2);
-        padding: 1rem;
+        padding: 7px 7px 1px 7px;
         border-radius: 5px;
     }
 }
-.member-item {
-    user-select: none;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 7px 1rem;
+.title {
+    font-size: 1.6rem;
+    font-weight: 600;
     margin-bottom: 1rem;
-    border-radius: 5px;
-    width: calc(50% - 5px);
-    background-color: var(--background-color);
-    transition: var(--transition-default);
-    .info {
-        margin-left: 1rem;
-    }
-    .name {
-        color: var(--text-color);
-        font-size: 1.6rem;
-    }
-    .username {
-        color: var(--sub-text-color);
-        font-size: 1.4rem;
-    }
-    .remove-btn {
-        color: var(--text-color);
-        position: absolute;
-        right: 5px;
-        padding: 0;
-        opacity: 0.5;
-        transition: var(--transition-default);
-    }
-    .remove-btn:hover {
-        opacity: 1;
-    }
+    color: var(--text-color);
+    user-select: none;
 }
+
 .toggles {
     display: flex;
     justify-content: flex-end;
@@ -63,4 +27,36 @@
     .toggle-btn {
         margin-left: 5px;
     }
+}
+
+.search-results {
+    width: 57rem;
+}
+
+.group-image {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.change-btn {
+    margin-bottom: 1.5rem;
+}
+.image-input {
+    display: none;
+}
+.preview-image {
+    border-radius: 5px;
+    margin: 0 10rem;
+    background-color: var(--text-color);
+}
+.no-data {
+    border: 1px solid var(--text-color);
+}
+.change-btn:hover ~ .preview-image {
+    opacity: 1;
+}
+
+.info-input {
+    margin-bottom: 1rem;
 }

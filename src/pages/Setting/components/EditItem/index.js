@@ -1,32 +1,32 @@
 import className from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import styles from './EditItem.module.scss';
-import { Button, Toggle } from '~/components';
+import { Toggle } from '~/components';
 
 const cx = className.bind(styles);
 
-function EditItem({ title, content, isToggle, isEditable, isActive, onToggle }) {
-    const [isEdit, setIsEdit] = useState(false);
+function EditItem({ title, value, noText, isToggle, isEditing, isActive, onToggle, onChange, isFocus }) {
+    const inputRef = useRef();
+
+    useEffect(() => {
+        if (isFocus && isEditing) {
+            inputRef.current.focus();
+        }
+    }, [isFocus, isEditing]);
+
     return (
         <div className={cx('wrapper')}>
             <h3 className={cx('title')}>
                 <p>{title}</p>
-                {isToggle ? <Toggle isActive={isActive} onToggle={onToggle} /> : null}
-                {isEditable ? (
-                    <Button
-                        onlyIcon
-                        leftIcon={<FontAwesomeIcon icon={isEdit ? faCheck : faPen} />}
-                        className={cx('edit-btn')}
-                        onClick={() => {
-                            setIsEdit(!isEdit);
-                        }}
-                    />
-                ) : null}
+                {isToggle && <Toggle isActive={isActive} onToggle={onToggle} />}
             </h3>
-            {content && <div className={cx('content')}>{isEdit ? <textarea /> : content}</div>}
+            {!noText &&
+                (isEditing ? (
+                    <input value={value} onChange={onChange} ref={inputRef} />
+                ) : (
+                    <div className={cx('content')}>{value}</div>
+                ))}
         </div>
     );
 }

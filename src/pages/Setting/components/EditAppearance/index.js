@@ -11,7 +11,7 @@ function EditAppearance() {
                 isToggle
                 isActive={dark}
                 title="Chủ đề"
-                content={dark ? 'Tối' : 'Sáng'}
+                value={dark ? 'Tối' : 'Sáng'}
                 onToggle={() => setDark(!dark)}
             />
         </div>

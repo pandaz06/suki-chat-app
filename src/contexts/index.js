@@ -1,5 +1,5 @@
-export { default as UserStatusProvider } from './UserStatusContext';
-export { default as NotifyProvider } from './NotifyContext';
 export { default as ModalProvider } from './ModalContext';
 export { default as ThemeProvider } from './ThemeContext';
-export { default as LoginProvider } from './LoginContext';
+export { default as AuthProvider } from './AuthContext';
+export { default as RoomsProvider } from './RoomsContext';
+export { default as OffCanvaProvider } from './OffCanvaContext';

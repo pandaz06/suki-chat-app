@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     background-color: transparent;
-    padding: 1rem;
+    padding: 7px;
     border-radius: 5px;
     margin-bottom: 5px;
     transition: var(--transition-default);
@@ -12,31 +12,28 @@
         width: calc(100% - 6rem);
         margin-left: 1rem;
     }
-    .name {
+    .info.small .sub-text {
+        margin-top: 2px;
+    }
+    .text {
         color: var(--text-color);
         font-weight: 600;
-        margin-bottom: 5px;
         font-size: 1.6rem;
-    }
-    .message {
-        font-size: 1.4rem;
-        font-weight: 300;
-        color: var(--sub-text-color);
         white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;
         width: 90%;
     }
-    .seen-circle {
-        position: absolute;
-        content: '';
-        background-color: var(--primary-color);
-        right: 1.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
+    .sub-text {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--sub-text-color);
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        width: 90%;
+        margin-top: 5px;
+        transition: var(--transition-default);
     }
     &.active {
         opacity: 1;
@@ -44,5 +41,15 @@
     }
     &:hover {
         background-color: var(--background-color-2);
+    }
+}
+.wrapper.isMessage {
+    .sub-text {
+        color: var(--text-color);
+    }
+}
+.wrapper.isMessage.isSeen {
+    .sub-text {
+        color: var(--sub-text-color);
     }
 }

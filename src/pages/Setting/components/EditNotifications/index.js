@@ -1,11 +1,8 @@
-import EditItem from '../EditItem';
-
 function EditNotifications() {
     return (
         <div>
-            <EditItem isToggle title="Tổng quan" />
-            <EditItem isToggle title="Tin nhắn" />
-            <EditItem isToggle title="Lời mời kết bạn" />
+            Hiện tại tính năng thông báo đang trong quá trình phát triển. Trong tương lai gần, tính năng này sẽ được cập
+            nhật.
         </div>
     );
 }

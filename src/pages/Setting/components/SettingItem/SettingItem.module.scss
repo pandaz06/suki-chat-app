@@ -1,0 +1,23 @@
+.wrapper {
+    color: var(--text-color);
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 5px;
+    transition: var(--transition-default);
+    &.active {
+        opacity: 1;
+        background-color: var(--background-color-2);
+    }
+    &:hover {
+        background-color: var(--background-color-2);
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .wrapper {
+        width: auto;
+        padding-right: 1.5rem;
+        margin-right: 5px;
+        margin-bottom: 0;
+    }
+}

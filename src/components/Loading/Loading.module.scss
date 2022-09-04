@@ -1,0 +1,40 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    flex: 1;
+    padding: 2rem;
+    background-color: var(--background-color);
+    animation: fadeIn ease 0.1s;
+}
+.wrapper.onlySpinner {
+    background-color: transparent;
+}
+.logo {
+    width: 10rem;
+    margin-bottom: 2rem;
+}
+.loading-icon {
+    font-size: 3rem;
+    color: var(--text-color);
+    animation: spinner ease-in-out 1s infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

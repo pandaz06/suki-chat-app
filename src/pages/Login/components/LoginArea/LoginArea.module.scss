@@ -1,9 +1,10 @@
 .wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 50%;
-    padding: 10rem 15rem;
+    padding: 5rem 7rem;
 }
 
 .header {
@@ -28,21 +29,24 @@
     text-align: center;
 }
 .options {
-    margin: 1rem 0;
+    width: 70%;
     display: flex;
     flex-direction: column;
+    align-self: center;
 }
 .option-btn {
     color: var(--text-color);
     border-color: var(--text-color);
     width: 100%;
     margin-bottom: 1rem;
+    &:hover {
+        background-color: var(--background-color-2);
+    }
 }
-.register-redirect {
-    text-align: center;
-    font-size: 1.5rem;
-}
-.open-register {
-    color: var(--text-color);
-    font-size: 1.5rem;
+
+@media screen and (max-width: 1023px) {
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+    }
 }

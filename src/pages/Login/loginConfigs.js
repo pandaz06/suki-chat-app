@@ -1,64 +1,100 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+    FacebookAuthProvider,
+    GithubAuthProvider,
+    GoogleAuthProvider,
+    signInWithPopup,
+    TwitterAuthProvider,
+} from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 
-import { auth } from '~/firebase/config';
+import { auth, db } from '~/firebase/config';
+import { addDocument, generateKeywords } from '~/services';
 
-const loginConfigs = [
-    {
-        title: 'Đăng nhập vào Suki',
-        options: [
+const createUserDoc = async (user) => {
+    const { displayName, uid, email, photoURL } = user;
+
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await getDoc(userRef);
+
+    if (!userSnap.exists()) {
+        addDocument(
+            'users',
             {
-                title: 'Tiếp tục với Email',
-                icon: <FontAwesomeIcon icon={faEnvelope} />,
-                onClick: () => {},
-            },
-            {
-                title: 'Tiếp tục với Google',
-                icon: <FontAwesomeIcon icon={faGoogle} />,
-                onClick: async () => {
-                    try {
-                        const provider = new GoogleAuthProvider();
-                        const user = await signInWithPopup(auth, provider).user;
-
-                        console.log(user);
-                    } catch (error) {
-                        console.log(error);
-                    }
+                uid,
+                keywords: generateKeywords(displayName.toLowerCase()),
+                profile: {
+                    displayName,
+                    bio: '',
+                    status: 'Thành viên của Suki',
+                    email,
+                    photoURL,
+                    photoName: '',
+                    wallpaperURL: '',
+                    wallpaperName: '',
+                    facebookRef: '',
+                    githubRef: '',
+                    youtubeRef: '',
+                    twitterRef: '',
+                    tiktokRef: '',
                 },
+                friendList: [],
+                requestList: [],
+                sendRequestList: [],
             },
-            {
-                title: 'Tiếp tục với Facebook',
-                icon: <FontAwesomeIcon icon={faFacebook} />,
-                onClick: () => {},
+            uid,
+        );
+    }
+};
+const signInWithSocialMedia = async (provider) => {
+    try {
+        const data = await signInWithPopup(auth, provider);
+
+        createUserDoc(data.user);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const loginConfigs = {
+    title: 'Đăng nhập vào Suki',
+    options: [
+        {
+            title: 'Đăng nhập với Google',
+            icon: <FontAwesomeIcon icon={faGoogle} />,
+            onClick: () => {
+                const provider = new GoogleAuthProvider();
+                signInWithSocialMedia(provider);
             },
-            {
-                title: 'Tiếp tục với Github',
-                icon: <FontAwesomeIcon icon={faGithub} />,
-                onClick: () => {},
+        },
+        {
+            title: 'Đăng nhập với Facebook',
+            icon: <FontAwesomeIcon icon={faFacebook} />,
+            onClick: () => {
+                const provider = new FacebookAuthProvider();
+                signInWithSocialMedia(provider);
             },
-            {
-                title: 'Tiếp tục với Twitter',
-                icon: <FontAwesomeIcon icon={faTwitter} />,
-                onClick: () => {},
+        },
+        {
+            title: 'Đăng nhập với Github',
+            icon: <FontAwesomeIcon icon={faGithub} />,
+            onClick: () => {
+                const provider = new GithubAuthProvider();
+                signInWithSocialMedia(provider);
             },
-        ],
-        bottomText: 'Bạn chưa có tài khoản ?',
-        changeTab: 'Đăng kí',
-    },
-    {
-        title: 'Đăng kí vào Suki',
-        options: [
-            {
-                title: 'Tiếp tục với Email',
-                icon: <FontAwesomeIcon icon={faEnvelope} />,
-                onClick: () => {},
+        },
+        {
+            title: 'Đăng nhập với Twitter',
+            icon: <FontAwesomeIcon icon={faTwitter} />,
+            onClick: () => {
+                const provider = new TwitterAuthProvider();
+                signInWithSocialMedia(provider);
             },
-        ],
-        bottomText: 'Bạn đã có tài khoản ?',
-        changeTab: 'Đăng nhập',
-    },
-];
+        },
+    ],
+    bottomText: 'Bạn chưa có tài khoản ?',
+    changeTab: 'Đăng kí',
+};
 
 export default loginConfigs;

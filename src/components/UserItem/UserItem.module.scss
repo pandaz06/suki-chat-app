@@ -1,0 +1,54 @@
+.wrapper {
+    user-select: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 7px 1rem;
+    margin-bottom: 7px;
+    border-radius: 5px;
+    width: calc(50% - 3px);
+    background-color: var(--background-color);
+    transition: var(--transition-default);
+    .info {
+        margin-left: 1rem;
+        max-width: 60%;
+    }
+    .name {
+        color: var(--text-color);
+        font-size: 1.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    .status {
+        color: var(--sub-text-color);
+        font-size: 1.4rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    .remove-btn {
+        color: var(--text-color);
+        position: absolute;
+        right: 5px;
+        padding: 3px 0;
+        margin-right: 3px;
+        opacity: 0.5;
+        transition: var(--transition-default);
+    }
+    .remove-btn:hover {
+        background-color: var(--background-color-2);
+        opacity: 1;
+    }
+}
+.wrapper.large {
+    width: 100%;
+}
+.wrapper.isChoosable {
+    cursor: pointer;
+    &:hover {
+        background-color: var(--background-color-2);
+    }
+}

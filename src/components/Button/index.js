@@ -8,6 +8,8 @@ const cx = classNames.bind(styles);
 function Button({
     to,
     href,
+    target,
+    rel,
     primary = false,
     outline = false,
     text = false,
@@ -47,6 +49,8 @@ function Button({
     } else if (href) {
         Comp = 'a';
         props.href = href;
+        props.target = target;
+        props.rel = rel;
     }
     const classes = cx('wrapper', {
         [className]: className,

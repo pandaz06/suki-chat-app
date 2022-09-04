@@ -1,36 +1,38 @@
 .wrapper {
     margin-bottom: 2rem;
-}
-.title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 1.7rem;
-    font-weight: 500;
-    user-select: none;
-}
-.content {
-    word-wrap: break-word;
-    font-size: 1.6rem;
-    line-height: 2rem;
-    border-radius: 5px;
-    padding: 1rem;
-    background-color: var(--background-color-2);
-    textarea {
-        outline: none;
-        border: none;
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-size: 1.7rem;
+        font-weight: 500;
+        user-select: none;
+    }
+    .loading-content {
+        height: 4rem;
+        border-radius: 5px;
+        background-color: var(--background-color-2);
+    }
+    .content {
+        word-wrap: break-word;
+        padding: 1rem;
         font-size: 1.6rem;
-        padding: 5px;
+        line-height: 2rem;
+        min-height: 4rem;
+        border-radius: 5px;
+        background-color: var(--background-color-2);
+    }
+    input {
+        outline: none;
+        padding: 1rem;
+        font-size: 1.6rem;
+        line-height: 2rem;
         max-width: 100%;
         min-width: 100%;
-    }
-}
-.edit-btn {
-    color: var(--text-color);
-    padding: 4px 2px;
-    opacity: 0.5;
-    &:hover {
-        opacity: 1;
+        border: none;
+        border-radius: 5px;
+        color: var(--text-color);
+        background-color: var(--background-color-2);
     }
 }

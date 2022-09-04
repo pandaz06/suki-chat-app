@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     top: 0;
     right: 0;
     bottom: 0;
@@ -14,17 +14,20 @@
 .container {
     display: flex;
     flex-direction: column;
-    position: absolute;
     background-color: var(--background-color);
     width: 60rem;
-    max-height: 50rem;
+    margin: 5rem;
+    max-height: 70%;
     border-radius: 5px;
+}
+.container.small {
+    width: 35rem;
 }
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 8px 1.5rem;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     background-color: var(--background-color-2);
@@ -42,6 +45,9 @@
     }
 }
 .content {
+    flex: 1;
+    overflow: auto;
+    overflow-y: overlay;
     padding: 1.5rem;
 }
 @keyframes fadeIn {

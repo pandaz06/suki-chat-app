@@ -1,50 +1,47 @@
 .wrapper {
+    flex: 1;
+}
+.wrapper.scroll {
+    max-height: 60rem;
     overflow: auto;
     overflow-y: overlay;
-    max-height: 40rem;
+    overflow-x: hidden;
 }
-.search-input {
-    padding: 3px 1rem;
+.header {
+    display: flex;
     margin-bottom: 1rem;
 }
+.search-input {
+    flex: 1;
+    padding: 3px 1rem;
+}
+
 .friend-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 100%;
     transition: var(--transition-default);
     padding: 1rem;
     border-radius: 5px;
-    .info {
-        display: flex;
-        align-items: center;
-    }
     .avatar {
         margin-right: 1rem;
+    }
+    .info {
+        width: calc(100% - 7rem);
     }
     .name {
         font-size: 1.6rem;
         font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
-    .username {
+    .status {
         color: var(--sub-text-color);
         font-size: 1.5rem;
-    }
-    .toggle-btns {
-        opacity: 0;
-        display: flex;
-        align-items: center;
-        transition: var(--transition-default);
-    }
-    .toggle-btn {
-        color: var(--text-color);
-        opacity: 0.6;
-        font-size: 1.5rem;
-        padding: 4px 1px;
-        margin-left: 5px;
-        background-color: transparent;
-        &:hover {
-            opacity: 1;
-        }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 .friend-item:hover {

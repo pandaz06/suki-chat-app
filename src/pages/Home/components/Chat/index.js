@@ -6,10 +6,13 @@ import Header from './Header';
 
 const cx = className.bind(styles);
 
-function Chat() {
+function Chat({ currentRoom, dataIndex }) {
     return (
         <div className={cx('wrapper')}>
-            <Header name="Group #1" username="@Odama" />
+            <Header
+                name={currentRoom.isDual ? currentRoom.displayName[dataIndex] : currentRoom.displayName}
+                desc={currentRoom.isDual ? currentRoom.desc[dataIndex] : currentRoom.desc}
+            />
             <ChatZone />
         </div>
     );

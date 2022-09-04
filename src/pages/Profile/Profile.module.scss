@@ -1,8 +1,15 @@
 .wrapper {
+    overflow: auto;
+    overflow-y: overlay;
     display: flex;
     flex-direction: column;
     padding: 0 10rem;
-    height: auto;
     min-height: 100vh;
     background-color: var(--background-color-2);
+}
+
+@media screen and (max-width: 1023px) {
+    .wrapper {
+        padding: 0 5px;
+    }
 }

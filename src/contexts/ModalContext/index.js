@@ -1,9 +1,29 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 const ModalContext = createContext();
 
-function ModalProvider({ value, children }) {
-    return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
+function ModalProvider({ children }) {
+    const [isShowModal, setIsShowModal] = useState(false);
+    const [modalTitle, setModalTitle] = useState('');
+    const [modalContent, setModalContent] = useState(null);
+    const [modalOptions, setModalOptions] = useState({});
+
+    return (
+        <ModalContext.Provider
+            value={{
+                isShowModal,
+                setIsShowModal,
+                modalTitle,
+                setModalTitle,
+                modalContent,
+                setModalContent,
+                modalOptions,
+                setModalOptions,
+            }}
+        >
+            {children}
+        </ModalContext.Provider>
+    );
 }
 
 export { ModalContext };

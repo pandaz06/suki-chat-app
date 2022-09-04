@@ -5,15 +5,18 @@ import Button from '~/components/Button';
 
 const cx = classnames.bind(styles);
 
-function Title({ content, subText, onSeeMore, isInvisibleBtn }) {
+function Title({ underlineSubText = true, content, subText, onSeeMore, isInvisibleBtn, isLoading }) {
     return (
         <div className={cx('wrapper')}>
             {content}
-            {subText && (
-                <Button text className={cx('sub-text', { isInvisibleBtn })} onClick={onSeeMore}>
-                    {subText}
-                </Button>
-            )}
+            {subText &&
+                (isLoading ? (
+                    <div className={cx('loading-sub-text')} />
+                ) : (
+                    <Button text={underlineSubText} className={cx('sub-text', { isInvisibleBtn })} onClick={onSeeMore}>
+                        {subText}
+                    </Button>
+                ))}
         </div>
     );
 }

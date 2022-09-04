@@ -1,21 +1,25 @@
 import classnames from 'classnames/bind';
-import { useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './UserInfo.module.scss';
 import { Button } from '~/components';
-import avatar from '~/assets/images/avatars/default-avatar.jpg';
+import { ModalContext } from '~/contexts/ModalContext';
+import ChangeWallpaperArea from './ChangeWallpaperArea';
 import fallbackWallpaper from '~/assets/images/wallpapers/fallback-wallpaper.jpg';
 
 const cx = classnames.bind(styles);
 
-function Wallpaper({ username, isEdit }) {
+function Wallpaper({ src, isEdit, isLoading }) {
+    const { setIsShowModal, setModalTitle, setModalContent, setModalOptions } = useContext(ModalContext);
     const [isShowEdit, setIsShowEdit] = useState(false);
 
-    const inputFileRef = useRef();
     const handleClickChange = () => {
-        inputFileRef.current.click();
+        setIsShowModal(true);
+        setModalTitle('Đổi ảnh bìa');
+        setModalContent(<ChangeWallpaperArea />);
+        setModalOptions({ small: false });
     };
 
     return (
@@ -24,21 +28,17 @@ function Wallpaper({ username, isEdit }) {
             onMouseOver={() => setIsShowEdit(true)}
             onMouseLeave={() => setIsShowEdit(false)}
         >
-            <img src={username ? avatar : fallbackWallpaper} alt="Minh Hoang" />
-            {isEdit && isShowEdit && (
+            {isLoading ? (
+                <div className={cx('loading-wallpaper')} />
+            ) : (
+                <img src={src || fallbackWallpaper} alt="Minh Hoang" />
+            )}
+            {isEdit && !isLoading && isShowEdit && (
                 <Button
                     onlyIcon
                     leftIcon={<FontAwesomeIcon icon={faCamera} />}
                     className={cx('change-btn')}
                     onClick={handleClickChange}
-                />
-            )}
-            {isEdit && (
-                <input
-                    ref={inputFileRef}
-                    type="file"
-                    accept="image/png, image/jpg, image/jpeg, image/gif"
-                    className={cx('change-input')}
                 />
             )}
         </div>

@@ -3,8 +3,8 @@ import EditItem from '../EditItem';
 function LegalPolicies() {
     return (
         <div>
-            <EditItem title="Điều khoản" content="Đây là điều khoản hehe" />
-            <EditItem title="Chính sách" content="Đây là chính sách hehe" />
+            <EditItem title="Điều khoản" value="Đây là điều khoản hehe" />
+            <EditItem title="Chính sách" value="Đây là chính sách hehe" />
         </div>
     );
 }

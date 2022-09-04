@@ -1,45 +1,26 @@
 import classnames from 'classnames/bind';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import styles from './DefaultLayout.module.scss';
-import { Notify, Sidebar } from '~/components';
-import { UserStatusContext } from '~/contexts/UserStatusContext';
-import { NotifyProvider } from '~/contexts';
-import { routesConfigs } from '~/configs';
-import avatar from '~/assets/images/avatars/default-avatar.jpg';
+import { Modal, Sidebar, OffCanva } from '~/components';
+import { ModalContext } from '~/contexts/ModalContext';
+import { ThemeContext } from '~/contexts/ThemeContext';
+import { OffCanvaContext } from '~/contexts/OffCanvaContext';
 
 const cx = classnames.bind(styles);
 
 function DefaultLayout({ children }) {
-    const [showNotify, setShowNotify] = useState(false);
-    const { isLogin, setIsLogin } = useContext(UserStatusContext);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (!isLogin) {
-            navigate(routesConfigs.login);
-        }
-    }, [isLogin, navigate]);
+    const { dark } = useContext(ThemeContext);
+    const { isShowModal, modalTitle, modalContent } = useContext(ModalContext);
+    const { isShowOffCanva } = useContext(OffCanvaContext);
 
     return (
-        <NotifyProvider value={{ showNotify, setShowNotify }}>
-            <div className={cx('wrapper')}>
-                <Sidebar />
-                {children}
-                {showNotify && (
-                    <Notify
-                        img={avatar}
-                        title="Đăng xuất"
-                        message="Bạn có chắc muốn đăng xuất khỏi Suki hay không ?"
-                        confirm="Xác nhận"
-                        cancel="Hủy"
-                        onConfirm={() => setIsLogin(false)}
-                        onCancel={() => setShowNotify(false)}
-                    />
-                )}
-            </div>
-        </NotifyProvider>
+        <div className={cx('wrapper', `${dark ? 'dark' : ''}`)}>
+            <Sidebar />
+            {children}
+            {isShowModal && <Modal title={modalTitle} content={modalContent} />}
+            {isShowOffCanva && <OffCanva />}
+        </div>
     );
 }
 
