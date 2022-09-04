@@ -37,7 +37,6 @@ function FriendList() {
                                 to={item.uid}
                                 src={item.profile.photoURL}
                                 name={item.profile.displayName}
-                                isOnline
                                 className={cx('user-avatar')}
                                 isLoading={!item}
                             />

@@ -22,17 +22,17 @@ function MessageList() {
     const { setIsShowModal, setModalTitle, setModalContent, setModalOptions } = useContext(ModalContext);
     const { rooms, currentID, setCurrentID } = useContext(RoomsContext);
     const [searchText, setSearchText] = useState('');
-    const [data, setData] = useState(rooms.reverse());
+    const [data, setData] = useState(rooms);
 
     const debounce = useDebounce(searchText, 500).trim();
 
     useEffect(() => {
         if (debounce) {
-            const result = rooms.reverse().filter((item) => item.keywords.includes(debounce.toLowerCase()));
+            const result = rooms.filter((item) => item.keywords.includes(debounce.toLowerCase()));
 
             setData(result);
         } else {
-            setData(rooms.reverse());
+            setData(rooms);
         }
     }, [debounce, rooms]);
 
