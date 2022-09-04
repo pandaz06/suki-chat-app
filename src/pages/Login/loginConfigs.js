@@ -62,14 +62,6 @@ const loginConfigs = {
                 signInWithSocialMedia(provider);
             },
         },
-        {
-            title: 'Đăng nhập với Facebook',
-            icon: <FontAwesomeIcon icon={faFacebook} />,
-            onClick: () => {
-                const provider = new FacebookAuthProvider();
-                signInWithSocialMedia(provider);
-            },
-        },
     ],
 };
 
