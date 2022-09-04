@@ -74,7 +74,6 @@ function ChatZone() {
 
     const handleScrollChat = (e) => {
         if (e.target.scrollTop === 0) {
-            console.log(messages);
         }
     };
 

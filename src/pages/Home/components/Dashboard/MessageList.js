@@ -45,7 +45,6 @@ function MessageList() {
 
     const handleScroll = (e) => {
         if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight) {
-            console.log('Scroll to bottom');
         }
     };
 
